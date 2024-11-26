@@ -1,0 +1,28 @@
+footer {
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: #333; /* Sử dụng màu tối nhưng không quá đậm */
+  color: #f4f4f9; /* Màu chữ trắng dịu */
+  text-align: center;
+  padding: 20px 0; /* Tạo khoảng cách đều phía trên và dưới */
+  border-top: 2px solid #444; /* Thêm đường viền trên để tách footer với nội dung */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ để tạo cảm giác nổi */
+  font-size: 14px; /* Cỡ chữ vừa phải */
+  font-family: Arial, sans-serif; /* Sử dụng font phổ biến */
+  z-index: 1000; /* Đảm bảo footer nằm trên cùng */
+}
+
+footer a {
+  color: #00bfff; /* Màu xanh nhạt cho các liên kết */
+  text-decoration: none;
+  margin: 0 10px; /* Khoảng cách giữa các liên kết */
+  font-weight: bold; /* Tạo sự nổi bật cho liên kết */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Thêm gạch chân khi hover */
+  color: #00ace6; /* Đổi màu liên kết khi hover */
+}

@@ -1,0 +1,166 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.menu {
+  
+  display: flex;
+}
+.menu > li {
+  padding: 0 16px;
+  position: relative;
+}
+
+.form {
+  padding: 20px;
+  position: relative;
+}
+.form-group {
+  position: absolute;
+  width: 60%;
+  height: 320px;
+  left: 270px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 4px;
+  
+}
+.form p {
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 8px;   
+}
+.form label {
+  padding: 12px;
+
+}
+.form input[type=text], select {
+width: 97%;
+margin-left: 12px;
+padding: 8px 15px;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+.btn-primary {
+  width: 70px;
+  padding: 8px 15px;
+  margin: 8px 0;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-btn .btn {
+  width: 80px;
+  padding: 8px ;
+  margin: 15px 0 0 12px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-btn .btn:hover {
+  background-color: green;
+}
+.form-check {
+  color: red;
+}
+.load {
+  top: 400px;
+  position: absolute;
+  width: 60%;
+  height: 310px;
+  left: 270px;
+  border: 1px solid #000;
+  background: #fff;
+ border-radius: 4px;
+}
+
+
+.data p {
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 8px;
+}
+.load_data table  {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.load_data table th, td {
+  text-align: left;
+  padding: 8px;
+}
+.load_data tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.btn-edit {
+  width: 70px;
+  padding: 8px 10px;
+  margin: 5px;
+  background-color: orange;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-delete {
+  width: 70px;
+  padding: 8px 10px;
+  margin: 5px;
+  background-color: red;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.load_data button:hover {
+  background-color: rgb(145, 215, 250);
+}
+
+.search {
+  padding: 6px;
+  margin-left: 465px;
+  width: 38%;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+}
+
+.btn-search {
+  width: 70px;
+  padding: 7px 10px;
+  margin: 3px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  
+}
+.btn-search:hover {
+  background-color: aqua;
+}
+
+.pagination {
+  padding-left: 330px;
+}
+.pagination button {
+  padding: 5px;
+  cursor: pointer;
+  margin: 3px;
+  border: none;
+}
+.pagination .active {
+  background-color: aqua;
+  
+}
+

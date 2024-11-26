@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px; /* Giảm padding để header nhỏ gọn hơn */
+  height: 70px;
+  width: 100%;
+  background: #333; /* Màu đen dịu nhẹ hơn */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ để tạo cảm giác nổi */
+  position: fixed; /* Header cố định trên cùng màn hình */
+  top: 0;
+  z-index: 1000; /* Đảm bảo header luôn ở trên cùng */
+}
+.logo p {
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu > li {
+  padding: 0 20px; /* Tạo khoảng cách lớn hơn giữa các mục */
+  position: relative;
+}
+
+.menu > li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500; /* Tạo font đậm hơn để dễ nhìn */
+  transition: color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu */
+}
+
+.menu > li a:hover {
+  color: #00ace6; /* Đổi màu xanh nhạt khi hover */
+}
+
+.btn-primary {
+  padding: 10px 15px; /* Tăng padding để nút dễ nhìn hơn */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Đổi màu xanh đậm hơn khi hover */
+}
