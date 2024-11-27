@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
-import useUserStore from '../store';
+import { UserContext } from '../context/UserContext';
 import { fetchUsers, deleteUser } from '../axios';
 
 function DataTable() {
-  const { users, setUsers } = useUserStore();
+  const { users, setUsers } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -19,7 +19,7 @@ function DataTable() {
   useEffect(() => {
     const loadUsers = async () => {
       try {
-        const data = await fetchUsers();
+        const data = await fetchUsers(); // lấy dữ liệu từ API
         setUsers(data);
         setFilteredData(data);
       } catch (error) {
@@ -33,7 +33,7 @@ function DataTable() {
   const handleSearch = () => {
     const filtered = users.filter(
       (item) =>
-        (item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
           item.email.toLowerCase().includes(searchTerm.toLowerCase())) &&
         (selectedRole === '' || item.role === selectedRole)
     );
@@ -44,7 +44,7 @@ function DataTable() {
   // Chọn/xóa người dùng
   const handleSelectUser = (id) => {
     setSelectedUsers((prevSelectedUsers) =>
-      prevSelectedUsers.includes(id)
+      prevSelectedUsers.includes(id) // dùng includes kiểm tra xem có id đấy không
         ? prevSelectedUsers.filter((selected) => selected !== id)
         : [...prevSelectedUsers, id]
     );
@@ -52,7 +52,7 @@ function DataTable() {
 
   const handleDeleteSelected = async () => {
     try {
-      const updatedUsers = users.filter((user) => !selectedUsers.includes(user.id));
+      const updatedUsers = users.filter((user) => !selectedUsers.includes(user.id)); // xóa các người dúng có id trong selectedUsers
       setFilteredData(updatedUsers);
 
       // Tính lại trang hiện tại nếu cần
@@ -75,25 +75,25 @@ function DataTable() {
 
   // Sắp xếp dữ liệu
   const handleSort = (key) => {
-    let direction = 'ascending';
+    let direction = 'ascending'; 
     if (sortConfig.key === key && sortConfig.direction === 'ascending') {
       direction = 'descending';
     }
     setSortConfig({ key, direction });
   };
 
-  // Dữ liệu hiện tại sau phân trang
-  const currentItems = React.useMemo(() => {
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    return filteredData.slice(indexOfFirstItem, indexOfLastItem);
-  }, [currentPage, itemsPerPage, filteredData]);
+  // phân trang
+  const currentItems = React.useMemo(() => { // sử dụng useMemo để ghi nhớ kết quả
+    const indexOfLastItem = currentPage * itemsPerPage; // trang hiện tại * số phần tử mỗi trang
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage; // vị trí phần tử cuối trang - số lượng phần tử
+    return filteredData.slice(indexOfFirstItem, indexOfLastItem); // trích xuất filteredData dựa trên vị trí đầu và cuối
+  }, [currentPage, itemsPerPage, filteredData]); // hàm hoạt động khi 1 trong 3 tham số thay đổi
 
-  const totalPages = React.useMemo(() => {
-    return Math.ceil(filteredData.length / itemsPerPage);
+  const totalPages = React.useMemo(() => { // hàm tính tổng số trang
+    return Math.ceil(filteredData.length / itemsPerPage); // sử dụng Math.ceil để làm tròn số trang lên
   }, [filteredData, itemsPerPage]);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber); // chuyển đổi sang một trang khác
 
   return (
     <div>
@@ -143,13 +143,13 @@ function DataTable() {
                     onChange={(e) => {
                       if (e.target.checked) {
                         const newSelections = currentItems.map((user) => user.id);
-                        setSelectedUsers([...new Set([...selectedUsers, ...newSelections])]);
+                        setSelectedUsers([...new Set([...selectedUsers, ...newSelections])]);// dùng new Set để loại bỏ các giá trị trùng lặp
                       } else {
                         const currentIds = currentItems.map((user) => user.id);
-                        setSelectedUsers(selectedUsers.filter((id) => !currentIds.includes(id)));
+                        setSelectedUsers(selectedUsers.filter((id) => !currentIds.includes(id))); // loại những id có trong selectedUsers mà nằm trong currentIds
                       }
                     }}
-                    checked={currentItems.length > 0 && currentItems.every((user) => selectedUsers.includes(user.id))}
+                    checked={currentItems.length > 0 && currentItems.every((user) => selectedUsers.includes(user.id))} // every() các phần tử trong mang thỏa mãn đk sẽ trả về true
                   />
                 </th>
                 <th onClick={() => handleSort('name')}>

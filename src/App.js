@@ -5,14 +5,16 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AppRoute from './AppRoute';
-
+import { UserProvider } from './context/UserContext';
 function App() {
   return (
-    <Router>
+    <UserProvider>
+      <Router>
       <Header />
         <AppRoute />  
       <Footer />
     </Router>
+    </UserProvider>
   );
 }
 

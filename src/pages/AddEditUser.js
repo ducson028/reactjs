@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import useUserStore from '../store';
+import { UserContext } from '../context/UserContext';
 import { addUser, updateUser } from '../axios'; 
 import './style.css';
 
@@ -13,36 +13,36 @@ const validationSchema = Yup.object().shape({
 });
 
 function AddEditUser() {
-  const { users, setUsers } = useUserStore();
+  const { users, setUsers } = useContext(UserContext);
   const navigate = useNavigate();
   const { name: userNameParam } = useParams();
   const location = useLocation();
   const [initialValues, setInitialValues] = useState({ name: '', email: '', role: '' });
 
   useEffect(() => {
-    if (location.state?.user) {
-      setInitialValues(location.state.user);
-    } else if (userNameParam) {
-      const user = users.find((u) => u.name === userNameParam);
-      if (user) {
-        setInitialValues(user);
+    if (location.state?.user) { // nếu có user được truyền qua location.state
+      setInitialValues(location.state.user);  // cập nhật user vào initialValues
+    } else if (userNameParam) { // kiểm tra xem có userNameParam chưa 
+      const user = users.find((u) => u.name === userNameParam); // nếu có tìm kiếm người dùng trong users bằng cách so sánh user.name = userNameParam
+      if (user) { // nếu thấy thông tin
+        setInitialValues(user);  // cập nhật người dùng
       }
     }
-  }, [userNameParam, location.state, users]);
+  }, [userNameParam, location.state, users]); // hàm sẽ chạy khi 1 trong 3 tham số thay đổi.
 
   const handleSubmit = async (values) => {
     try {
       if (userNameParam && initialValues.id) {
-        const updatedUsers = users.map((u) => (u.id === values.id ? values : u));
-        setUsers(updatedUsers);
+        const updatedUsers = users.map((u) => (u.id === values.id ? values : u));// duyệt qua users, nếu user.id = values.id thay thế thông tin = values
+        setUsers(updatedUsers); // cập nhật danh sách người dùng
         await updateUser(initialValues.id, values); // Sử dụng API updateUser
       } else {
-        if (users.some((u) => u.email === values.email)) {
+        if (users.some((u) => u.email === values.email)) { 
           alert('Người dùng với email này đã tồn tại');
           return;
         }
         const newUser = await addUser(values); // Sử dụng API addUser
-        setUsers([...users, newUser]);
+        setUsers([...users, newUser]);// cập nhật newUser vào cuối danh sách.
       }
       navigate('/data');
     } catch (error) {

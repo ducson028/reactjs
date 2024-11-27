@@ -18,7 +18,6 @@ const Login = () => {
       setError('Vui lòng nhập tài khoản và mật khẩu');
       return;
     }
-    // Tìm người dùng theo email và kiểm tra role là Admin
     const user = userLogin.find((user) => user.account === account && user.password === password); 
     //Hàm find tìm kiếm trong mảng userLogin một đối tượng có thuộc tính account trùng lặp
     
