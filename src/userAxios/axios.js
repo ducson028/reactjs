@@ -1,12 +1,4 @@
-import axios from 'axios';
-
-// Cấu hình cơ bản của axios
-const axiosInstance = axios.create({
-  baseURL: 'https://670f29fa3e7151861656bff0.mockapi.io/api/ds',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+import  { axiosInstance } from './configAxios'
 
 // API để thêm người dùng mới
 export const addUser = async (user) => {
@@ -51,3 +43,5 @@ export const deleteUser = async (id) => {
     throw error;
   }
 };
+
+

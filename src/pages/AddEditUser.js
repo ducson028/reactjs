@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { UserContext } from '../context/UserContext';
-import { addUser, updateUser } from '../axios'; 
+import { addUser, updateUser } from '../userAxios/axios'; 
 import './style.css';
 
 const validationSchema = Yup.object().shape({
