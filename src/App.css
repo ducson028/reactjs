@@ -99,9 +99,11 @@ box-sizing: border-box;
   text-align: center;
   border-collapse: collapse;
 }
+
+
 .load_data table th, td {
   text-align: left;
-  padding: 8px;
+  padding: 15px;
 }
 .load_data tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -128,6 +130,10 @@ box-sizing: border-box;
   background-color: rgb(145, 215, 250);
 }
 
+.check {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
 .search {
   padding: 6px;
   margin-left: 465px;

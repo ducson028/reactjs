@@ -29,17 +29,24 @@ function DataTable() {
     loadUsers();
   }, [setUsers]);
 
-  // Tìm kiếm và lọc dữ liệu
+  // Tìm kiếm 
   const handleSearch = () => {
-    const filtered = users.filter(
-      (item) =>
-        (item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-          item.email.toLowerCase().includes(searchTerm.toLowerCase())) &&
-        (selectedRole === '' || item.role === selectedRole)
+    const filtered = users.filter((user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filtered);
     setCurrentPage(1);
   };
+
+  // Lọc theo vai trò ngay khi chọn
+  useEffect(() => {
+    const filteredByRole = users.filter(
+      (user) => selectedRole === '' || user.role === selectedRole
+    );
+    setFilteredData(filteredByRole);
+    setCurrentPage(1);
+  }, [selectedRole, users]);
 
   // Chọn/xóa người dùng
   const handleSelectUser = (id) => {
@@ -51,36 +58,50 @@ function DataTable() {
   };
 
   const handleDeleteSelected = async () => {
-    try {
-      const updatedUsers = users.filter((user) => !selectedUsers.includes(user.id)); // xóa các người dúng có id trong selectedUsers
-      setFilteredData(updatedUsers);
-
-      // Tính lại trang hiện tại nếu cần
-      const totalPagesAfterDeletion = Math.ceil(updatedUsers.length / itemsPerPage);
-      if (currentPage > totalPagesAfterDeletion) {
-        setCurrentPage(totalPagesAfterDeletion);
+    if (selectedUsers.length > 0) {
+      const confirmDelete = window.confirm('Bạn có chắc chắn muốn xóa các người dùng đã chọn không?');
+      if (!confirmDelete) 
+        return;
+      
+      try {
+        const updatedUsers = users.filter((user) => !selectedUsers.includes(user.id));
+        setFilteredData(updatedUsers);
+  
+        // Tính lại trang hiện tại nếu cần
+        const totalPagesAfterDeletion = Math.ceil(updatedUsers.length / itemsPerPage);
+        if (currentPage > totalPagesAfterDeletion) {
+          setCurrentPage(totalPagesAfterDeletion);
+        }
+  
+        setUsers(updatedUsers);
+  
+        // Gọi API xóa
+        await Promise.all(selectedUsers.map((id) => deleteUser(id)));
+  
+        setSelectedUsers([]);
+      } catch (error) {
+        console.error('Lỗi khi xoá người dùng:', error);
       }
-
-      // Cập nhật trạng thái người dùng
-      setUsers(updatedUsers);
-
-      // Xóa qua API
-      await Promise.all(selectedUsers.map((id) => deleteUser(id)));
-
-      setSelectedUsers([]);
-    } catch (error) {
-      console.error('Lỗi khi xoá người dùng:', error);
-    }
+    } 
   };
+  
 
   // Sắp xếp dữ liệu
   const handleSort = (key) => {
-    let direction = 'ascending'; 
+    let direction = 'ascending';
     if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+      direction = 'descending'; 
     }
-    setSortConfig({ key, direction });
+  
+    const sortedData = [...filteredData].sort((a, b) => {
+      if (a[key] < b[key]) return direction === 'ascending' ? -1 : 1;
+      if (a[key] > b[key]) return direction === 'ascending' ? 1 : -1;
+      return 0;
+    });
+    setFilteredData(sortedData);
+    setSortConfig({ key, direction }); 
   };
+  
 
   // phân trang
   const currentItems = React.useMemo(() => { // sử dụng useMemo để ghi nhớ kết quả
@@ -139,6 +160,7 @@ function DataTable() {
               <tr>
                 <th>
                   <input
+                  className='check'
                     type="checkbox"
                     onChange={(e) => {
                       if (e.target.checked) {

@@ -12,7 +12,6 @@ footer {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ để tạo cảm giác nổi */
   font-size: 14px; /* Cỡ chữ vừa phải */
   font-family: Arial, sans-serif; /* Sử dụng font phổ biến */
-  z-index: 1000; /* Đảm bảo footer nằm trên cùng */
 }
 
 footer a {

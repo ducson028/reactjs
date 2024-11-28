@@ -37,6 +37,7 @@ const Login = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <label className="form-label-login">Tài khoản:</label>
       <input
+        className='input-login'
         type="text"
         placeholder="Tài khoản"
         value={account}  
@@ -44,6 +45,7 @@ const Login = () => {
       />
       <label className="form-label-login">Mật khẩu:</label>
       <input
+       className='input-login'
         type="password"
         placeholder="Mật khẩu"
         value={password}

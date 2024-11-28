@@ -95,10 +95,11 @@ body {
 
 /* Load Section */
 .load {
+  position: sticky;
   flex: 1;
-  width: 80%;
-  padding-bottom: 60px;
-  margin: 100px auto 0; /* Căn giữa phần load */
+  width: 85%;
+  padding-bottom: 15px;
+  margin: 100px; /* Căn giữa phần load */
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,10 +122,21 @@ body {
   text-align: left;
   border-collapse: collapse;
 }
+.load_data table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Đảm bảo th header không bị che khuất */
+}
 
+.data {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
 .load_data table th, td {
-  padding: 15px;
+  padding: 15px 0 15px 0;
   border-bottom: 1px solid #ddd;
+  position: relative;
 }
 
 .load_data tr:nth-child(even) {
@@ -157,7 +169,7 @@ body {
 /* Search and Filter Section */
 .search {
   padding: 10px;
-  margin-left: 300px;
+  margin-left: 340px;
   width: 40%;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -265,15 +277,21 @@ body {
 }
 
 input {
-  width: 90%;
-  padding: 10px;
-  margin: 0 15px 10px 15px;
+  width: 35%;
+  margin: 0 15px 10px 0;
   font-size: 16px;
   border-radius: 4px; 
   border: 1px solid #ccc;
 }
+.input-login {
+  width: 90%;
+  padding: 12px;
+  margin: 0 15px 15px 15px;
+  border-radius: 4px; 
+  border: 1px solid #ccc;
+}
 .form-label-login {
-  padding: 15px;
+  padding: 10px;
   font-weight: bold;
 }
 
