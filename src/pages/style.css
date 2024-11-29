@@ -104,7 +104,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: auto; /* Cho phép cuộn nếu nội dung vượt quá chiều cao */
+  overflow: hidden;
 }
 
 .data p {
@@ -116,7 +116,9 @@ body {
   margin-bottom: 10px;
 }
 .load_data {
-  padding:  15px 0 0;
+  height: 330px; /* Đặt chiều cao cố định để bảng có thể cuộn */
+  overflow-y: auto; /* Thanh cuộn dọc */
+  overflow-x: hidden; /* Ẩn thanh cuộn ngang */
 }
 .load_data table {
   width: 100%;
@@ -126,18 +128,24 @@ body {
 .load_data table thead th {
   position: sticky;
   top: 0;
-  z-index: 1; /* Đảm bảo th header không bị che khuất */
+  z-index: 2; /* Đảm bảo th header không bị che khuất */
+  background-color: #fff; /* Đặt màu nền để tránh bị trong suốt */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng bóng nếu cần */
 }
+
 
 .data {
   position: sticky;
   top: 0;
-  z-index: 1;
+  background-color: #fff;
+  padding-bottom: 20px;
+  z-index: 2;
 }
 .load_data table th, td {
   padding: 15px 0 15px 0;
   border-bottom: 1px solid #ddd;
-  position: relative;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .load_data tr:nth-child(even) {

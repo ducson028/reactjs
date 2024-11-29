@@ -4,7 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import AppRoute from './components/Route/AppRoute';
+import AppRoute from './Route/AppRoute';
 import { UserProvider } from './context/UserContext';
 function App() {
   

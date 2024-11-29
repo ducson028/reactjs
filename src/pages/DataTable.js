@@ -31,10 +31,15 @@ function DataTable() {
 
   // Tìm kiếm 
   const handleSearch = () => {
-    const filtered = users.filter((user) =>
+    const filtered = users.filter((user) =>{
+      const matchesSearchTerm =
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+
+      const matchesRole = selectedRole === '' || user.role === selectedRole;
+    
+    return matchesSearchTerm && matchesRole;
+  });
     setFilteredData(filtered);
     setCurrentPage(1);
   };

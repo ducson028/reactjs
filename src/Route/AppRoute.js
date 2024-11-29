@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import DataTable from '../../pages/DataTable';
-import AddEditUser from '../../pages/AddEditUser';
-import Login from '../../pages/Login';
-import useUserStore from '../../store';  
+import DataTable from '../pages/DataTable';
+import AddEditUser from '../pages/AddEditUser';
+import Login from '../pages/Login';
+import useUserStore from '../store';
 import PrivateRoute from './PrivateRoute';  // Import PrivateRoute
 
 function AppRoute() {
