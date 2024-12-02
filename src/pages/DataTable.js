@@ -132,7 +132,7 @@ function DataTable() {
           <button
             onClick={handleDeleteSelected}
             className="btn-delete"
-            disabled={selectedUsers.length === 0}
+            // disabled={selectedUsers.length === 0}
           >
             Delete
           </button>

@@ -99,7 +99,6 @@ body {
   position: sticky;
   flex: 1;
   width: 85%;
-  padding-bottom: 15px;
   margin: 100px; /* Căn giữa phần load */
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -116,7 +115,7 @@ body {
   margin-bottom: 10px;
 }
 .load_data {
-  height: 330px; /* Đặt chiều cao cố định để bảng có thể cuộn */
+  height: 320px; /* Đặt chiều cao cố định để bảng có thể cuộn */
   overflow-y: auto; /* Thanh cuộn dọc */
   overflow-x: hidden; /* Ẩn thanh cuộn ngang */
 }
@@ -227,11 +226,12 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
+  background-color: #fff;
 }
 
 .pagination button {
   padding: 8px 12px;
-  margin: 0 10px 5px;
+  margin: 10px 10px 5px;
   background-color: #f0f0f0;
   border: 1px solid #ddd;
   border-radius: 4px;
