@@ -21,6 +21,7 @@ li {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ để tạo cảm giác nổi */
   position: fixed; /* Header cố định trên cùng màn hình */
   top: 0;
+  left: 0;
   z-index: 1000; /* Đảm bảo header luôn ở trên cùng */
 }
 .logo p {
@@ -51,6 +52,7 @@ li {
 .btn-primary {
   padding: 10px 15px; /* Tăng padding để nút dễ nhìn hơn */
   color: white;
+  background-color: #333;
   border: none;
   border-radius: 4px;
   cursor: pointer;

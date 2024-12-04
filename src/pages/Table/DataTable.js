@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
-import { UserContext } from '../context/UserContext';
-import { fetchUsers, deleteUser } from '../userAxios/axios';
+import { UserContext } from '../../context/UserContext';
+import { fetchUsers, deleteUser } from '../../userAxios/axios';
 
 function DataTable() {
   const { users, setUsers } = useContext(UserContext);
