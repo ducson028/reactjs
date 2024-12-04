@@ -27,7 +27,7 @@
   }
   
   .form input[type="text"], select {
-    width: calc(100% - 40px);
+    width: calc(100% - 25px);
     margin-left: 20px;
     padding: 10px;
     margin: 10px;
@@ -55,7 +55,7 @@
   .form-btn .btn {
     width: 100px;
     padding: 10px;
-    margin: 10px 0 20px 10px;
+    margin: 10px 0 10px 10px;
     background-color: #007bff;
     color: white;
     border: none;

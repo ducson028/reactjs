@@ -13,7 +13,8 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { userLogin, login } = useUserStore();  
-
+  
+  
   const handleLogin = () => {
     if (!account || !password) {
       setError('Vui lòng nhập tài khoản và mật khẩu');
@@ -32,7 +33,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <p> Đăng nhập</p>
+      <p className='dangnhap'> Đăng nhập</p>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     
       <input
@@ -60,6 +61,9 @@ const Login = () => {
         </span>}
       </div>
       <button className="btn-login" onClick={handleLogin}><GoArrowRight /></button>
+      <div>
+        <p className='or'>or Login with</p>
+      </div>
     
       <div className='password-logo'>        
         <a href='https://www.facebook.com/'><FaFacebook /></a>
