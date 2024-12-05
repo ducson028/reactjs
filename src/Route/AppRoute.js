@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DataTable from '../pages/Table/DataTable';
 import AddEditUser from '../pages/AddEditUser/AddEditUser';
-import Login from '../pages/login/Login';
+import Login from '../login/Login';
 import useUserStore from '../store';
 import PrivateRoute from './PrivateRoute';  // Import PrivateRoute
 
@@ -16,7 +16,7 @@ function AppRoute() {
       
       {/* Các route yêu cầu đăng nhập sẽ được bảo vệ bằng PrivateRoute */}
       <Route
-        path="/datatable"
+        path="/"
         element={
           <PrivateRoute>
             <DataTable users={users} setUsers={setUsers} />
