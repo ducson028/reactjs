@@ -190,7 +190,7 @@ function DataTable() {
                 </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{background: '#ccc'}}>
               {currentItems.map((user) => (
                 <tr key={user.id}>
                   <td>
