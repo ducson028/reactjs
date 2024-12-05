@@ -14,7 +14,7 @@ const Header = () => {
     if (confirmLogout) {
       logout();
       // Điều hướng về trang chủ nếu người dùng chọn "OK"
-      navigate('/');
+      navigate('/login');
     }
   };
   

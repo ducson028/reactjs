@@ -7,7 +7,7 @@ function PrivateRoute({ children }) {
 
   if (!isAuthenticated) {
     // Nếu chưa đăng nhập, chuyển hướng về trang login
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   return children; // Nếu đã đăng nhập, render component con

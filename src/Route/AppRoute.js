@@ -12,7 +12,7 @@ function AppRoute() {
   return (
     <Routes>
       {/* Route không cần đăng nhập */}
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       
       {/* Các route yêu cầu đăng nhập sẽ được bảo vệ bằng PrivateRoute */}
       <Route

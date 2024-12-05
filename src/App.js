@@ -19,7 +19,7 @@ function App() {
 
 function AppWithHeaderFooter() {
   const location = useLocation();
-  const isLogin = location.pathname === '/'; // Kiểm tra xem có phải trang đăng nhập không
+  const isLogin = location.pathname === '/login'; // Kiểm tra xem có phải trang đăng nhập không
 
   return (
     <div>
