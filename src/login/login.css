@@ -10,7 +10,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:  #6b73ff;
 }
 
 .login-container {
